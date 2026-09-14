@@ -449,6 +449,78 @@ button { cursor: pointer; }
 .back-to-top--visible { opacity: 1; pointer-events: auto; }
 .back-to-top:hover { border-color: var(--muted); color: var(--signal); }
 
+/* ─── Extra-Curricular Activities ─── */
+.extracurricular-section { position: relative; }
+.activity-nav-wrapper { display: flex; justify-content: flex-start; margin-bottom: 28px; }
+.activity-tabs { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 5px; border-radius: 9999px; background: var(--surface); border: 1px solid var(--line-strong); }
+.activity-tab { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 9999px; border: 1px solid transparent; background: transparent; color: var(--muted); font-size: 13px; font-weight: 500; cursor: pointer; transition: color .18s ease, background .18s ease, border-color .18s ease; }
+.activity-tab:hover { color: var(--text); background: var(--canvas-raised); }
+.activity-tab--active { background: var(--signal); color: #07130e; font-weight: 650; border-color: var(--signal); }
+.activity-tab--active:hover { background: var(--signal-deep); color: #07130e; }
+
+.activity-tabpanel { position: relative; }
+.activity-all-grid { display: grid; gap: 32px; }
+
+.activity-card { position: relative; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 18px; background: var(--canvas-raised); padding: clamp(24px, 3.5vw, 36px); transition: border-color .2s ease; }
+.activity-card:hover { border-color: var(--muted); }
+.activity-card--embedded { border-style: solid; }
+
+/* Subtle visual accents per sub-section */
+.activity-card--ncc { border-top: 2px solid color-mix(in srgb, #3b82f6 60%, var(--line-strong)); }
+.activity-card--gym { border-top: 2px solid color-mix(in srgb, #f59e0b 60%, var(--line-strong)); }
+.activity-card--marathons { border-top: 2px solid color-mix(in srgb, #10b981 60%, var(--line-strong)); }
+
+.activity-card__header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.activity-card__title-group { display: grid; gap: 6px; }
+
+.activity-badge { display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; }
+.activity-badge--ncc { background: color-mix(in srgb, #3b82f6 12%, transparent); color: #60a5fa; border: 1px solid color-mix(in srgb, #3b82f6 30%, transparent); }
+.activity-badge--gym { background: color-mix(in srgb, #f59e0b 12%, transparent); color: #fbbf24; border: 1px solid color-mix(in srgb, #f59e0b 30%, transparent); }
+.activity-badge--marathons { background: color-mix(in srgb, #10b981 12%, transparent); color: #34d399; border: 1px solid color-mix(in srgb, #10b981 30%, transparent); }
+
+.activity-card__title { margin: 4px 0 0; font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 700; letter-spacing: -.03em; color: var(--text); }
+.activity-card__subtitle { margin: 0; color: var(--muted); font-size: 13px; font-weight: 500; }
+.activity-card__intro { margin: 0 0 24px; max-width: 72ch; color: var(--text-soft); font-size: 14.5px; line-height: 1.65; }
+
+.activity-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.activity-pillar { display: flex; gap: 12px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); transition: border-color .18s ease, transform .18s ease; }
+.activity-pillar:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+.activity-pillar__icon { display: grid; width: 32px; height: 32px; flex-shrink: 0; place-items: center; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--canvas-raised); color: var(--signal); }
+.activity-card--ncc .activity-pillar__icon { color: #60a5fa; }
+.activity-card--gym .activity-pillar__icon { color: #fbbf24; }
+.activity-card--marathons .activity-pillar__icon { color: #34d399; }
+
+.activity-pillar__content { display: grid; gap: 4px; }
+.activity-pillar__title { margin: 0; font-size: 13.5px; font-weight: 650; color: var(--text); }
+.activity-pillar__text { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+
+.activity-stats { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.activity-stat { padding: 12px 16px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 2px; }
+.activity-stat__val { font-size: 18px; font-weight: 700; color: var(--text); font-family: var(--font-mono); }
+.activity-stat__lbl { font-size: 11px; color: var(--muted); }
+
+.activity-timeline { display: grid; gap: 12px; margin-bottom: 20px; }
+.activity-timeline__item { padding-left: 14px; border-left: 2px solid var(--line-strong); display: grid; gap: 2px; }
+.activity-timeline__period { font-size: 11px; font-family: var(--font-mono); color: var(--signal); }
+.activity-timeline__heading { margin: 0; font-size: 13px; font-weight: 600; color: var(--text); }
+.activity-timeline__desc { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* Media Gallery / Upload hint */
+.activity-media-empty { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 12px; border: 1px dashed var(--line-strong); background: color-mix(in srgb, var(--surface) 50%, transparent); }
+.activity-media-empty__icon { display: grid; width: 38px; height: 38px; flex-shrink: 0; place-items: center; border-radius: 9px; background: var(--canvas-raised); border: 1px solid var(--line); color: var(--muted); }
+.activity-media-empty__content { display: grid; gap: 2px; }
+.activity-media-empty__title { font-size: 13px; font-weight: 600; color: var(--text); }
+.activity-media-empty__text { margin: 0; font-size: 12px; color: var(--muted); }
+.activity-media-empty__hint { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+.activity-media-empty__hint code { color: var(--text-soft); }
+
+.activity-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+.activity-gallery__item { margin: 0; }
+.activity-gallery__frame { position: relative; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.activity-gallery__image { object-fit: cover; transition: transform .3s ease; }
+.activity-gallery__frame:hover .activity-gallery__image { transform: scale(1.04); }
+.activity-gallery__caption { margin-top: 6px; font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
 /* ─── Animations ─── */
 @keyframes signal-route { to { stroke-dashoffset: -180; } }
 @keyframes topology-ping { 0%,100% { opacity: .7; r: 4; } 50% { opacity: .3; r: 5; } }
@@ -552,6 +624,11 @@ button { cursor: pointer; }
   .education-card__details { grid-column: auto; }
   .education-card__mark { display: none; }
 
+  .activity-nav-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .activity-tabs { flex-wrap: nowrap; width: max-content; }
+  .activity-media-empty { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .activity-media-empty__hint { margin-left: 0; }
+
   .github-section { padding-bottom: 3.5rem; }
   .github-panel__overview { display: grid; gap: 14px; padding: 20px; }
   .github-panel__overview .button { width: fit-content; }
@@ -616,6 +693,9 @@ button { cursor: pointer; }
   .project-row__links, .featured-project__links { align-items: flex-start; flex-direction: column; gap: 10px; }
   .featured-project__links .button { width: 100%; }
   .education-card { padding: 20px; }
+  .activity-card { padding: 20px 16px; border-radius: 14px; }
+  .activity-pillars { grid-template-columns: 1fr; }
+  .activity-tab { padding: 6px 12px; font-size: 12px; }
   .github-panel__profile strong { font-size: 12px; }
   .github-panel__profile { align-items: flex-start; }
   .contribution-grid { grid-template-columns: repeat(20, minmax(0, 1fr)); }

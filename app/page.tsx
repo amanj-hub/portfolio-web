@@ -3,6 +3,7 @@ import { Achievements } from "@/components/achievements";
 import { BackToTop } from "@/components/back-to-top";
 import { Contact } from "@/components/contact";
 import { Education } from "@/components/education";
+import { ExtraCurricular } from "@/components/extracurricular";
 import { Experience } from "@/components/experience";
 import { FeaturedProject } from "@/components/featured-project";
 import { GitHubActivity } from "@/components/github-activity";
@@ -25,6 +26,7 @@ export default function Home() {
         <Experience />
         <Achievements />
         <Education />
+        <ExtraCurricular />
         <GitHubActivity />
         <Contact />
       </main>
