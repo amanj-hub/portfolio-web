@@ -378,6 +378,11 @@ export const extracurricularConfig: {
           caption: "Surya Spiti Challenge — Finishers holding the Indian Tricolour at the high-altitude finish",
         },
         {
+          src: "/extracurricular/marathons/raftaar-finish-line.jpg",
+          alt: "Raftaar 2.0 Timed Run finish line moment on red carpet with medal and race bib",
+          caption: "Raftaar 2.0 Timed Run — Finish line moment with official medal and bib on the red carpet",
+        },
+        {
           src: "/extracurricular/marathons/raftaar-marathon-timed-run.jpg",
           alt: "Raftaar 2.0 Timed Run finishers squad displaying official medals and bibs",
           caption: "Raftaar 2.0 Timed Run — Finisher celebration with team medals and official race bibs",
