@@ -168,13 +168,31 @@ export const extracurricularConfig: {
       ],
       // Add your NCC photographs placed in /public/extracurricular/ncc/ here:
       media: [
-        /*
         {
-          src: "/extracurricular/ncc/parade-drill.jpg",
-          alt: "NCC drill parade in uniform",
-          caption: "Morning squad drill during annual camp training",
+          src: "/extracurricular/ncc/ncc-ceremonial-uniform.jpg",
+          alt: "NCC Senior Division Cadet in ceremonial drill uniform with hackle and sash",
+          caption: "Senior Division Cadet — In full ceremonial uniform with hackle, sash, and parade gaiters",
         },
-        */
+        {
+          src: "/extracurricular/ncc/ncc-tank-formation.jpg",
+          alt: "NCC cadets mounted on Indian Army battle tanks in field formation",
+          caption: "Combined Army training camp — Cadets with Indian Army main battle tanks",
+        },
+        {
+          src: "/extracurricular/ncc/ncc-field-engineering-instruction.jpg",
+          alt: "Cadets receiving instruction on field engineering and mine warfare",
+          caption: "Field Engineering & Mine Warfare training session conducted by Indian Army instructors",
+        },
+        {
+          src: "/extracurricular/ncc/ncc-stage-address.jpg",
+          alt: "NCC cadets delivering an address from the podium on stage",
+          caption: "Command & presentation — Cadet address and briefing at institutional gathering",
+        },
+        {
+          src: "/extracurricular/ncc/ncc-armored-vehicles-exposure.jpg",
+          alt: "Cadet field exposure with tactical armored vehicles",
+          caption: "Tactical mobility & armored vehicles exposure during field training camp",
+        },
       ],
       mediaPlaceholderText:
         "Add your NCC parade, camp, drill, or uniform photos to /public/extracurricular/ncc/",
