@@ -5,8 +5,18 @@ export type ActivityMedia = {
 };
 
 export type ActivityPillar = {
+  category?: string;
   title: string;
   description: string;
+  iconName?: "shield" | "award" | "users" | "target" | "compass" | "activity" | "check";
+};
+
+export type ActivityAchievement = {
+  title: string;
+  category: "Certificate" | "Camp" | "Event" | "Competition" | "Rank" | "Award" | string;
+  issuer?: string;
+  date?: string;
+  description?: string;
 };
 
 export type ActivityStat = {
@@ -20,6 +30,34 @@ export type ActivityTimelineItem = {
   description: string;
 };
 
+export type ActivityMilestone = {
+  title: string;
+  category?: "Milestone" | "Personal Record" | "Challenge" | "Goal" | "Progress" | string;
+  metric?: string;
+  date?: string;
+  note?: string;
+};
+
+export type RunningRace = {
+  name: string;
+  distance?: string;
+  event?: string;
+  date?: string;
+  location?: string;
+  finishTime?: string;
+  personalBest?: boolean;
+  position?: string;
+  notes?: string;
+};
+
+export type RunningTimelineItem = {
+  year: string;
+  event: string;
+  distance: string;
+  result?: string;
+  note?: string;
+};
+
 export type ActivityItem = {
   id: "ncc" | "gym" | "marathons";
   tabLabel: string;
@@ -29,7 +67,11 @@ export type ActivityItem = {
   themeAccent: "ncc" | "gym" | "marathons";
   description: string;
   pillars: ActivityPillar[];
-  // Optional stats and timeline (empty by default - no fake entries)
+  // Optional achievements, milestones, races, runningTimeline, stats and timeline (empty by default - no fake entries)
+  achievements?: ActivityAchievement[];
+  milestones?: ActivityMilestone[];
+  races?: RunningRace[];
+  runningTimeline?: RunningTimelineItem[];
   stats?: ActivityStat[];
   timeline?: ActivityTimelineItem[];
   media: ActivityMedia[];
@@ -52,93 +94,271 @@ export const extracurricularConfig: {
       id: "ncc",
       tabLabel: "NCC",
       title: "National Cadet Corps (NCC)",
-      subtitle: "Cadet Training & Civic Duty",
-      badge: "Discipline · Leadership · Teamwork",
+      subtitle: "Cadet Training, Leadership & Character Building",
+      badge: "Discipline · Leadership · Resilience",
       themeAccent: "ncc",
       description:
-        "Training with the National Cadet Corps provides a strong grounding in institutional discipline, structured drill, chain of command, and collaborative leadership. It emphasizes self-reliance, physical readiness, and dedication to collective responsibility.",
+        "My involvement in the National Cadet Corps (NCC) has been a cornerstone in developing unshakeable discipline, situational leadership, and mutual accountability. Through structured drill protocol, squad coordination, and rigorous training routines, the cadet experience instilled the mental resilience to remain composed under pressure, execute team responsibilities with precision, and lead with clarity.",
       pillars: [
         {
-          title: "Discipline & Protocol",
+          category: "Discipline",
+          title: "Standards & Precision",
           description:
-            "Upholding strict standards of punctuality, drill coordination, and personal responsibility in uniform.",
+            "Practicing uncompromising punctuality, drill coordination, uniform etiquette, and high personal standards of order.",
+          iconName: "shield",
         },
         {
-          title: "Leadership Under Pressure",
+          category: "Leadership",
+          title: "Command & Decision-Making",
           description:
-            "Guiding squads, maintaining composure in fast-paced scenarios, and making clear, accountable decisions.",
+            "Guiding squads through synchronized movements, communicating with clarity, and maintaining poise in fast-paced scenarios.",
+          iconName: "compass",
         },
         {
-          title: "Teamwork & Camaraderie",
+          category: "Teamwork",
+          title: "Unit Cohesion & Trust",
           description:
-            "Fostering mutual trust and seamless coordination across diverse teams working toward unified objectives.",
+            "Operating with mutual reliance across diverse teams, prioritizing group objectives, and supporting peers through demanding tasks.",
+          iconName: "users",
+        },
+        {
+          category: "Training",
+          title: "Drills & Physical Readiness",
+          description:
+            "Participating in rigorous physical conditioning, endurance drills, obstacle handling, and institutional field protocol.",
+          iconName: "target",
+        },
+        {
+          category: "Responsibility",
+          title: "Duty & Accountability",
+          description:
+            "Carrying out institutional duties with integrity, honoring commitments, and stepping up with dependability whenever needed.",
+          iconName: "check",
         },
       ],
-      media: [],
+      // Optional Achievements & Certifications (Empty by default - no invented entries)
+      // Add your verified certificates, camps, ranks, or awards here:
+      achievements: [
+        /*
+        {
+          title: "Combined Annual Training Camp (CATC)",
+          category: "Camp",
+          issuer: "NCC Directorate",
+          date: "2023",
+          description: "Completed intensive residential camp training focusing on weapon training, drill, and field craft.",
+        },
+        {
+          title: "NCC 'A' / 'B' / 'C' Certificate Examination",
+          category: "Certificate",
+          issuer: "Ministry of Defence",
+          date: "2024",
+          description: "Qualified certificate examination demonstrating proficiency in cadet training and leadership.",
+        },
+        */
+      ],
+      // Optional Timeline (Empty by default - no invented entries)
+      timeline: [
+        /*
+        {
+          period: "2022 — Present",
+          title: "Senior Division Cadet",
+          description: "Active cadet participating in regular parades, ceremonial drills, and community service initiatives.",
+        },
+        */
+      ],
+      // Add your NCC photographs placed in /public/extracurricular/ncc/ here:
+      media: [
+        /*
+        {
+          src: "/extracurricular/ncc/parade-drill.jpg",
+          alt: "NCC drill parade in uniform",
+          caption: "Morning squad drill during annual camp training",
+        },
+        */
+      ],
       mediaPlaceholderText:
-        "Add parade, camp, or field training photos to /public/extracurricular/ncc/",
+        "Add your NCC parade, camp, drill, or uniform photos to /public/extracurricular/ncc/",
       folderPath: "public/extracurricular/ncc/",
     },
     {
       id: "gym",
       tabLabel: "Gym & Fitness",
-      title: "Gym & Strength Training",
-      subtitle: "Physical Conditioning & Everyday Consistency",
-      badge: "Consistency · Strength · Mental Focus",
+      title: "Gym & Fitness",
+      subtitle: "Lifestyle Conditioning, Discipline & Everyday Consistency",
+      badge: "Consistency · Self-Discipline · Personal Growth",
       themeAccent: "gym",
       description:
-        "Strength training serves as a daily practice of consistency, incremental progress, and mental resilience. The commitment required to show up regularly and execute deliberate reps mirrors the patience needed to architect and debug complex software systems.",
+        "For me, fitness is an essential anchor for everyday discipline, mental clarity, and sustainable energy. Consistent physical training demands showing up on ordinary days, executing deliberate movements with precision, and embracing incremental progression. That steady process directly fuels daily stamina, reinforces personal accountability, and builds the patience required to solve difficult engineering problems.",
       pillars: [
         {
-          title: "Daily Consistency",
+          category: "Routine",
+          title: "Structured Daily Regimen",
           description:
-            "Building high-performance routines and executing training regimens regardless of short-term motivation.",
+            "Maintaining scheduled training blocks throughout the week to protect physical readiness and mental focus.",
+          iconName: "target",
         },
         {
-          title: "Progressive Overload",
+          category: "Consistency",
+          title: "Process Over Motivation",
           description:
-            "Focusing on steady, measurable, incremental advancements through disciplined tracking and technique.",
+            "Prioritizing repeatable habits and disciplined follow-through over fleeting emotional motivation.",
+          iconName: "compass",
         },
         {
-          title: "Mental Fortitude",
+          category: "Strength",
+          title: "Deliberate Functional Work",
           description:
-            "Developing focus, resilience against physical exhaustion, and prioritizing holistic physical recovery.",
+            "Focusing on compound movements, clean form, and progressive physical capability built over time.",
+          iconName: "shield",
+        },
+        {
+          category: "Conditioning",
+          title: "Stamina & Daily Vitality",
+          description:
+            "Balancing strength workouts with cardiovascular endurance to sustain high work capacity and daily energy.",
+          iconName: "activity",
+        },
+        {
+          category: "Recovery",
+          title: "Sustainable Longevity",
+          description:
+            "Valuing restful sleep, disciplined nutrition, and active recovery to prevent burnout and maintain long-term health.",
+          iconName: "check",
         },
       ],
-      media: [],
+      // Optional Milestones, Personal Records & Goals (Empty by default - no fake numbers or invented statistics)
+      // Add your verified fitness milestones or training goals here:
+      milestones: [
+        /*
+        {
+          title: "Consistent Weekly Training Schedule",
+          category: "Milestone",
+          metric: "4-5 sessions / week",
+          note: "Maintained steady training adherence alongside academic and development deadlines",
+        },
+        {
+          title: "Clean Form on Compound Lifts",
+          category: "Personal Record",
+          metric: "Form Mastery",
+          note: "Prioritizing injury prevention, controlled tempo, and functional mechanics",
+        },
+        */
+      ],
+      // Add your gym photographs placed in /public/extracurricular/gym/ here:
+      media: [
+        /*
+        {
+          src: "/extracurricular/gym/workout-routine.jpg",
+          alt: "Gym training and workout session",
+          caption: "Morning strength conditioning and mobility work",
+        },
+        */
+      ],
       mediaPlaceholderText:
-        "Add workout, training, or fitness photos to /public/extracurricular/gym/",
+        "Add your workout, gym, conditioning, or training photos to /public/extracurricular/gym/",
       folderPath: "public/extracurricular/gym/",
     },
     {
       id: "marathons",
       tabLabel: "Marathons & Running",
       title: "Marathons & Distance Running",
-      subtitle: "Endurance, Pacing Strategy & Mental Grit",
+      subtitle: "Endurance Training, Pacing Strategy & Mental Grit",
       badge: "Endurance · Resilience · Goal Execution",
       themeAccent: "marathons",
       description:
-        "Distance running is an exercise in pacing, energy distribution, and pushing past fatigue thresholds. It demands clear goal-setting, cardiovascular conditioning, and the mental grit to stay focused over long, solitary miles.",
+        "Distance running has been a profound practice in pacing, cardiovascular endurance, and mental grit. Whether logging early morning training miles or pushing through late fatigue barriers, distance running reinforces the discipline to sustain effort when comfort fades, manage energy splits deliberately, and remain committed to long-term physical goals. The resilience forged on the road translates directly into how I navigate complex engineering challenges.",
       pillars: [
         {
-          title: "Pacing Strategy",
+          category: "Pacing",
+          title: "Split & Energy Management",
           description:
-            "Carefully balancing energy output and managing splits to sustain performance over long distances.",
+            "Carefully balancing energy output, respecting split paces, and developing the discipline to sustain performance over long mileage.",
+          iconName: "target",
         },
         {
-          title: "Endurance & Resilience",
+          category: "Endurance",
+          title: "Cardiovascular Stamina",
           description:
-            "Conditioning the mind and body to break through mental fatigue barriers and keep forward momentum.",
+            "Building aerobic threshold, respiratory health, and the physical stamina to power through demanding distances.",
+          iconName: "activity",
         },
         {
-          title: "Goal-Oriented Mileage",
+          category: "Mental Grit",
+          title: "Fatigue Threshold Resilience",
           description:
-            "Planning training blocks, accumulating steady mileage, and seeing demanding physical challenges through to the finish.",
+            "Conditioning the mind to break through psychological fatigue walls and keep strong forward momentum.",
+          iconName: "compass",
+        },
+        {
+          category: "Consistency",
+          title: "Structured Mileage Blocks",
+          description:
+            "Accumulating steady weekly training mileage through disciplined scheduling, rain or shine.",
+          iconName: "shield",
+        },
+        {
+          category: "Goal Execution",
+          title: "Race-Day Preparation & Focus",
+          description:
+            "Setting clear event targets, sticking to training periodization, and seeing demanding races through to the finish.",
+          iconName: "check",
         },
       ],
-      media: [],
+      // Optional Running Highlights / Race Log (Empty by default - no fake race results or invented statistics)
+      // Add your real races, runs, or events here:
+      races: [
+        /*
+        {
+          name: "City Half Marathon",
+          distance: "21.1 km",
+          event: "Annual City Marathon",
+          date: "October 2024",
+          location: "New Delhi",
+          finishTime: "1h 52m",
+          personalBest: true,
+          position: "Top 15%",
+          notes: "Maintained even 5:18/km splits throughout",
+        },
+        */
+      ],
+      // Optional Achievements & Medals (Empty by default - no fake entries)
+      achievements: [
+        /*
+        {
+          title: "Half Marathon Official Finisher Medal",
+          category: "Medal",
+          date: "2024",
+          description: "Completed full 21.1 km course under official timing guidelines.",
+        },
+        */
+      ],
+      // Optional Running Timeline (Empty by default - no fake entries)
+      runningTimeline: [
+        /*
+        {
+          year: "2024",
+          event: "Delhi Half Marathon",
+          distance: "21.1 km",
+          result: "Official Finisher",
+          note: "First sub-2h official half marathon",
+        },
+        */
+      ],
+      // Add your marathon/running photographs placed in /public/extracurricular/marathons/ here:
+      media: [
+        {
+          src: "/extracurricular/marathons/surya-spiti-challenge-run.jpg",
+          alt: "Surya Spiti Challenge high-altitude marathon run along the Sumdo route",
+          caption: "Surya Spiti Challenge — High-altitude endurance run passing Sumdo in Spiti Valley",
+        },
+        {
+          src: "/extracurricular/marathons/surya-spiti-challenge-flag.jpg",
+          alt: "Surya Spiti Challenge finishers holding the Indian National Flag",
+          caption: "Surya Spiti Challenge — Finishers holding the Indian Tricolour at the high-altitude finish",
+        },
+      ],
       mediaPlaceholderText:
-        "Add marathon, marathon bib, run route, or event photos to /public/extracurricular/marathons/",
+        "Add your race-day, running, medal, or event photos to /public/extracurricular/marathons/",
       folderPath: "public/extracurricular/marathons/",
     },
   ],
