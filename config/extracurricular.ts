@@ -246,13 +246,16 @@ export const extracurricularConfig: {
       ],
       // Add your gym photographs placed in /public/extracurricular/gym/ here:
       media: [
-        /*
         {
-          src: "/extracurricular/gym/workout-routine.jpg",
-          alt: "Gym training and workout session",
-          caption: "Morning strength conditioning and mobility work",
+          src: "/extracurricular/gym/gym-silhouette-flex.png",
+          alt: "Gym physique conditioning silhouette double biceps pose",
+          caption: "Strength conditioning & physique silhouette — Consistency and dedication",
         },
-        */
+        {
+          src: "/extracurricular/gym/gym-workout-mirror.png",
+          alt: "Gym workout mirror training focus",
+          caption: "Gym training focus — Everyday discipline, routine workouts and steady progression",
+        },
       ],
       mediaPlaceholderText:
         "Add your workout, gym, conditioning, or training photos to /public/extracurricular/gym/",
