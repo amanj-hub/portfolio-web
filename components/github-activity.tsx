@@ -14,7 +14,7 @@ export function GitHubActivity() {
     <section className="section github-section" aria-labelledby="github-title">
       <div className="shell">
         <SectionHeading
-          index="07"
+          index="08"
           eyebrow="Open source"
           title={<><span id="github-title">A habit of</span> <em>building in public.</em></>}
           description="A selection of public work, with a lightweight activity preview that keeps the page fast and API-free."

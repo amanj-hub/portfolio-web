@@ -1,11 +1,36 @@
+import Image from "next/image";
 import type { Project } from "@/config/site";
 
 export function ProjectVisual({ project }: { project: Project }) {
   const visualLabels = {
-    orbit: "WORKFLOW / 01",
-    ledger: "LEGAL / 02",
+    orbit: "RECRUITMENT / 01",
+    ledger: "LEGALBOT / 02",
     pulse: "KNOWLEDGE / 03",
   } as const;
+
+  if (project.image) {
+    return (
+      <div className="project-showcase" aria-hidden="true">
+        <div className="project-showcase__chrome">
+          <span className="project-showcase__dot" />
+          <span className="project-showcase__dot" />
+          <span className="project-showcase__dot" />
+          <span className="project-showcase__url">{project.name.toLowerCase().replace(/\s+/g, "-")}.app</span>
+          <span className="project-showcase__tag">{visualLabels[project.visual]}</span>
+        </div>
+        <div className="project-showcase__viewport">
+          <Image
+            src={project.image}
+            alt={project.imageAlt || project.name}
+            width={960}
+            height={540}
+            className="project-showcase__img"
+            sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 600px"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`project-visual project-visual--${project.visual} project-visual--${project.accent}`} aria-hidden="true">

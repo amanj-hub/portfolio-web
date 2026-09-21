@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, MapPin } from "lucide-react";
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -12,7 +12,7 @@ export function About() {
           index="01"
           eyebrow="About"
           title={<><span id="about-title">A developer who cares about</span> <em>the whole experience.</em></>}
-          description="I enjoy moving between product questions and implementation details, so the finished work feels considered from first click to last request."
+          description="I enjoy moving between product thinking and implementation — so the finished work feels considered from first click to last request."
           align="split"
         />
         <div className="about-grid">
@@ -33,7 +33,7 @@ export function About() {
               <figcaption className="profile-card__caption"><strong>{siteConfig.name}</strong></figcaption>
             </Reveal>
             <Reveal className="currently-card" delay={0.18}>
-              <div className="currently-card__head"><Sparkles size={16} aria-hidden="true" /><span>Currently</span></div>
+              <div className="currently-card__head"><CheckCircle2 size={16} aria-hidden="true" /><span>Currently</span></div>
               <div className="currently-card__rows">
                 {about.currently.map((item) => (
                   <div key={item.label}>
@@ -41,8 +41,15 @@ export function About() {
                     <strong>{item.value}</strong>
                   </div>
                 ))}
+                <div>
+                  <span>Location</span>
+                  <strong style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                    <MapPin size={12} aria-hidden="true" style={{ color: "var(--signal)", flexShrink: 0 }} />
+                    Bihar, India
+                  </strong>
+                </div>
               </div>
-              <div className="currently-card__foot"><CheckCircle2 size={15} aria-hidden="true" /> Making room for meaningful challenges.</div>
+              <div className="currently-card__foot"><CheckCircle2 size={15} aria-hidden="true" /> Always open to meaningful challenges.</div>
             </Reveal>
           </div>
         </div>

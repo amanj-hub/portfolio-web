@@ -14,5 +14,9 @@
 # editor / system files
 .DS_Store
 *.log
-*.tsbuildinfo 
+*.tsbuildinfo
+
+# scratch & temporary files
+.scratch
+tmp
 

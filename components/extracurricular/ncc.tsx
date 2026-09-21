@@ -7,7 +7,6 @@ import {
   Flag,
   Medal,
   Shield,
-  Sparkles,
   Target,
   Users,
 } from "lucide-react";

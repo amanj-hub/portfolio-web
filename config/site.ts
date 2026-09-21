@@ -2,12 +2,15 @@ export type Project = {
   name: string;
   eyebrow: string;
   description: string;
+  shortDescription?: string;
   problem: string;
   stack: string[];
   liveUrl?: string;
   githubUrl?: string;
   visual: "orbit" | "ledger" | "pulse";
   accent: "violet" | "cyan" | "lime";
+  image?: string;
+  imageAlt?: string;
 };
 
 export const siteConfig = {
@@ -94,17 +97,23 @@ export const projects: Project[] = [
     eyebrow: "Enterprise recruitment platform",
     description:
       "An enterprise-grade recruitment portal that automates resume parsing and candidate shortlisting while giving recruiters, candidates, and administrators dedicated workflows.",
+    shortDescription:
+      "Automated resume parsing and candidate shortlisting workflows with AI suitability scoring.",
     problem:
       "Recruitment teams needed a structured way to evaluate applications by skills, experience, education, and keywords instead of manually reviewing every resume.",
     stack: ["MERN Stack", "Redux Toolkit", "JWT", "PDF Processing", "Chart.js"],
     visual: "orbit",
     accent: "violet",
+    image: "/images/projects/smart-recruitment-portal.jpg",
+    imageAlt: "Smart Recruitment Portal candidate pipeline dashboard with resume match scoring",
   },
   {
     name: "LegalBot India",
     eyebrow: "Generative AI legal awareness",
     description:
       "A Hinglish AI chatbot that helps people understand Indian laws and women’s safety resources through text and voice interaction.",
+    shortDescription:
+      "Hinglish AI chatbot providing real-time Indian legal guidance, safety resources, and voice interaction.",
     problem:
       "Legal information and safety resources can be difficult to understand or access quickly in urgent situations.",
     stack: ["Node.js", "Express.js", "Google Gemini", "JavaScript", "Web Speech API"],
@@ -112,18 +121,24 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Yash-Yadav0/LEGALBOT-AI-CHATBOT",
     visual: "ledger",
     accent: "cyan",
+    image: "/images/projects/legalbot-india.jpg",
+    imageAlt: "LegalBot India Hinglish AI legal assistant chat interface with safety hotlines",
   },
   {
     name: "Lessons Learned Management System",
     eyebrow: "Knowledge management platform",
     description:
       "A full-stack workspace for documenting project insights and learning resources, with AI-powered recommendations to make knowledge easier to reuse.",
+    shortDescription:
+      "Knowledge management repository with AI-powered recommendations for engineering post-mortems.",
     problem:
       "Project lessons and resources were hard to find, filter, and connect to the work people were doing.",
     stack: ["JavaScript", "Node.js", "Express.js", "MongoDB", "REST APIs", "JWT"],
     githubUrl: "https://github.com/amanj-hub/llms-project",
     visual: "pulse",
     accent: "lime",
+    image: "/images/projects/llms-project.jpg",
+    imageAlt: "Lessons Learned Management System insights dashboard with AI recommendation cards",
   },
 ];
 
@@ -141,6 +156,8 @@ export const featuredProject = {
   stack: ["React", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "JWT"],
   outcome:
     "A centralized recruitment workflow with application tracking, suitability evaluation, and clear role-specific dashboards.",
+  image: "/images/projects/smart-recruitment-portal.jpg",
+  imageAlt: "Smart Recruitment Portal candidate pipeline and hiring analytics dashboard",
 };
 
 export const experiences = [

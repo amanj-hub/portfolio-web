@@ -13,7 +13,7 @@ export function Achievements() {
           index="05"
           eyebrow="Certifications"
           title={<><span id="achievements-title">Proof of</span> <em>curiosity in motion.</em></>}
-          description="A compact place for the work and communities that have helped shape how I build."
+          description="Professional certifications earned across full-stack development, AI, databases, and security."
           align="split"
         />
         <div className="achievement-grid">
@@ -21,7 +21,10 @@ export function Achievements() {
             const Icon = icons[achievement.icon];
             return (
               <Reveal className="achievement-card" delay={index * 0.06} key={achievement.title}>
-                <div className="achievement-card__top"><Icon size={20} strokeWidth={1.5} aria-hidden="true" /><span>{achievement.type}</span></div>
+                <div className="achievement-card__top">
+                  <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
+                  <span>{achievement.type}</span>
+                </div>
                 <h3>{achievement.title}</h3>
                 <p>{achievement.description}</p>
               </Reveal>

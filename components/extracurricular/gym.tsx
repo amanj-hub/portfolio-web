@@ -1,18 +1,15 @@
 import {
-  Activity,
   CalendarCheck,
   CheckCircle2,
-  Compass,
   Dumbbell,
   Flame,
   HeartPulse,
-  Shield,
   Target,
   TrendingUp,
   Trophy,
   Zap,
 } from "lucide-react";
-import type { ActivityItem, ActivityMilestone, ActivityPillar } from "@/config/extracurricular";
+import type { ActivityItem, ActivityPillar } from "@/config/extracurricular";
 import { ActivityMediaGallery } from "./activity-media";
 
 type SubSectionProps = {

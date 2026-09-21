@@ -100,14 +100,31 @@ export function SiteHeader() {
         </nav>
 
         <div className="header-actions">
-          <button className="icon-button" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
-            {theme === "dark" ? <Sun size={17} aria-hidden="true" /> : <Moon size={17} aria-hidden="true" />}
-          </button>
-          <a className="button button--small header-resume" href={siteConfig.resumeUrl} download>
-            Résumé
+          <a
+            className="icon-button header-social-link"
+            href={siteConfig.social.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+            title="GitHub"
+          >
+            <Github size={16} aria-hidden="true" />
           </a>
-          <a className="header-cta" href="#contact">
-            Let&apos;s Talk
+          <a
+            className="icon-button header-social-link"
+            href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+            title="LinkedIn"
+          >
+            <Linkedin size={16} aria-hidden="true" />
+          </a>
+          <button className="icon-button theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
+            {theme === "dark" ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
+          </button>
+          <a className="header-cta" href={siteConfig.resumeUrl} download aria-label="Download résumé">
+            Résumé
           </a>
           <button
             className="icon-button menu-button"
@@ -117,7 +134,7 @@ export function SiteHeader() {
             aria-controls="mobile-navigation"
             aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           >
-            {menuOpen ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
+            {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
         </div>
       </div>
