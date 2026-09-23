@@ -1,37 +1,77 @@
-import { ArrowUpRight, Check } from "lucide-react";
-import { experiences } from "@/config/site";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { achievements, education, experiences } from "@/config/site";
 
 export function Experience() {
   return (
-    <section id="experience" className="section section-anchor experience-section" aria-labelledby="experience-title">
+    <section id="experience" className="section anchor" aria-labelledby="experience-title">
       <div className="shell">
         <SectionHeading
-          index="04"
-          eyebrow="Experience"
-          title={<><span id="experience-title">A record of</span> <em>making and learning.</em></>}
-          description="Hands-on experience building full-stack applications and strengthening backend and AI-enabled development skills."
-          align="split"
+          index="03"
+          label="Experience"
+          titleId="experience-title"
+          title="A record of making and learning."
+          description="Hands-on training, certifications and the academic foundation behind the work."
         />
-        <div className="timeline">
-          {experiences.map((experience, index) => (
-            <Reveal className="timeline-item" delay={index * 0.09} key={`${experience.period}-${experience.role}`}>
-              <div className="timeline-item__period"><span>{String(index + 1).padStart(2, "0")}</span><strong>{experience.period}</strong></div>
-              <article className="timeline-item__content">
-                <div className="timeline-item__title"><h3>{experience.role}</h3><span>{experience.organization}</span></div>
-                <p>{experience.description}</p>
-                <ul className="timeline-item__contributions">
-                  {experience.contributions.map((contribution) => <li key={contribution}><Check size={14} aria-hidden="true" />{contribution}</li>)}
-                </ul>
-                <ul className="stack-list" aria-label={`${experience.role} technologies`}>
-                  {experience.technologies.map((technology) => <li key={technology}>{technology}</li>)}
-                </ul>
-              </article>
-            </Reveal>
-          ))}
+
+        <div className="xp">
+          <Reveal className="xp__group">
+            <p className="xp__group-head label">Experience</p>
+            {experiences.map((item) => (
+              <div className="row" key={`${item.period}-${item.role}`}>
+                <p className="row__period">{item.period}</p>
+                <div>
+                  <h3 className="row__title">{item.role}</h3>
+                  <p className="row__org">{item.organization}</p>
+                  <p className="row__text">{item.description}</p>
+                  <ul className="row__list">
+                    {item.contributions.map((contribution) => (
+                      <li key={contribution}>
+                        <Check size={14} aria-hidden="true" />
+                        {contribution}
+                      </li>
+                    ))}
+                  </ul>
+                  <ul className="stack row__stack" aria-label={`${item.role} technologies`}>
+                    {item.technologies.map((technology) => (
+                      <li key={technology}>{technology}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </Reveal>
+
+          <Reveal className="xp__group" delay={0.06}>
+            <p className="xp__group-head label">Certifications</p>
+            {achievements.map((item) => (
+              <div className="row" key={item.title}>
+                <p className="row__period">{item.type}</p>
+                <div>
+                  <h3 className="row__title">{item.title}</h3>
+                  <p className="row__text">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </Reveal>
+
+          <Reveal className="xp__group" delay={0.06}>
+            <p className="xp__group-head label">Education</p>
+            {education.map((item) => (
+              <div className="row" key={item.degree}>
+                <p className="row__period">{item.period}</p>
+                <div>
+                  <h3 className="row__title">{item.degree}</h3>
+                  <p className="row__org">{item.school}</p>
+                  <p className="row__note">
+                    {item.note} &bull; {item.coursework.join(" · ")}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Reveal>
         </div>
-        <Reveal className="experience-note"><span>Looking for the next signal.</span><a className="text-link" href="#contact">Start a conversation <ArrowUpRight size={16} aria-hidden="true" /></a></Reveal>
       </div>
     </section>
   );

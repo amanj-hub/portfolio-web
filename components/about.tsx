@@ -1,58 +1,72 @@
-import { ArrowUpRight, CheckCircle2, MapPin } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import { Toolkit } from "@/components/skills";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { about, siteConfig } from "@/config/site";
+import { about, education } from "@/config/site";
+
+const facts = [
+  { label: about.currently[0].label, value: about.currently[0].value },
+  { label: "Education", value: `${education[0].school} · ${education[0].period}` },
+  { label: "Focus", value: "Full-stack engineering with applied AI" },
+  { label: "Interests", value: "NCC, distance running and fitness" },
+  { label: "Location", value: "Bihar, India" },
+];
 
 export function About() {
   return (
-    <section id="about" className="section section-anchor" aria-labelledby="about-title">
+    <section id="about" className="section anchor" aria-labelledby="about-title">
       <div className="shell">
         <SectionHeading
           index="01"
-          eyebrow="About"
-          title={<><span id="about-title">A developer who cares about</span> <em>the whole experience.</em></>}
-          description="I enjoy moving between product thinking and implementation — so the finished work feels considered from first click to last request."
-          align="split"
+          label="About"
+          titleId="about-title"
+          title={
+            <>
+              A developer who cares about <em className="editorial">the whole experience.</em>
+            </>
+          }
+          description="I move between product thinking and implementation, so the finished work feels considered from the first click to the last request."
         />
-        <div className="about-grid">
-          <Reveal className="about-copy" delay={0.06}>
-            <p className="lead-copy">{about.lead}</p>
-            <p>{about.body}</p>
-            <a className="text-link" href="#contact">Work with me <ArrowUpRight size={16} aria-hidden="true" /></a>
+
+        <div className="about__grid">
+          <Reveal>
+            <p className="about__statement">{about.lead}</p>
           </Reveal>
-          <div className="about-aside">
-            <Reveal className="profile-card" delay={0.12}>
-              <Image
-                src={siteConfig.profileImage}
-                alt={siteConfig.profileImageAlt}
-                fill
-                sizes="(max-width: 760px) calc(100vw - 40px), 420px"
-                className="profile-card__image"
-              />
-              <figcaption className="profile-card__caption"><strong>{siteConfig.name}</strong></figcaption>
-            </Reveal>
-            <Reveal className="currently-card" delay={0.18}>
-              <div className="currently-card__head"><CheckCircle2 size={16} aria-hidden="true" /><span>Currently</span></div>
-              <div className="currently-card__rows">
-                {about.currently.map((item) => (
-                  <div key={item.label}>
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                  </div>
-                ))}
-                <div>
-                  <span>Location</span>
-                  <strong style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                    <MapPin size={12} aria-hidden="true" style={{ color: "var(--signal)", flexShrink: 0 }} />
-                    Bihar, India
-                  </strong>
-                </div>
-              </div>
-              <div className="currently-card__foot"><CheckCircle2 size={15} aria-hidden="true" /> Always open to meaningful challenges.</div>
-            </Reveal>
-          </div>
+          <Reveal className="about__text" delay={0.08}>
+            <p className="about__lead">{about.body}</p>
+            <p>
+              Right now I am going deeper into generative AI, REST API design and backend systems, while staying close
+              to the interface where the experience is actually felt.
+            </p>
+            <div>
+              <a className="tlink" href="#contact">
+                Work with me <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </Reveal>
         </div>
+
+        <Reveal className="facts" delay={0.05}>
+          {facts.map((fact) => (
+            <div className="fact" key={fact.label}>
+              <span className="label">{fact.label}</span>
+              <span className="fact__value">
+                {fact.label === "Location" ? (
+                  <>
+                    <MapPin size={12} aria-hidden="true" style={{ display: "inline", marginRight: 6, color: "var(--accent)" }} />
+                    {fact.value}
+                  </>
+                ) : (
+                  fact.value
+                )}
+              </span>
+            </div>
+          ))}
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <Toolkit />
+        </Reveal>
       </div>
     </section>
   );

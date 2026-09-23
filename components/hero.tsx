@@ -1,90 +1,125 @@
 "use client";
 
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownToLine, ArrowRight, Code2, Github, Linkedin, Mail } from "lucide-react";
+import { useRef, type PointerEvent as ReactPointerEvent } from "react";
 import { siteConfig } from "@/config/site";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
-  const reveal = (delay: number) => ({
-    initial: shouldReduceMotion ? false : { opacity: 0, y: 14 },
+  const portraitRef = useRef<HTMLDivElement>(null);
+
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const springX = useSpring(pointerX, { stiffness: 120, damping: 22, mass: 0.4 });
+  const springY = useSpring(pointerY, { stiffness: 120, damping: 22, mass: 0.4 });
+  const shiftX = useTransform(springX, [-1, 1], [-9, 9]);
+  const shiftY = useTransform(springY, [-1, 1], [-7, 7]);
+
+  function handlePointerMove(event: ReactPointerEvent<HTMLElement>) {
+    if (shouldReduceMotion || event.pointerType !== "mouse") return;
+    const bounds = portraitRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+  }
+
+  function resetPointer() {
+    pointerX.set(0);
+    pointerY.set(0);
+  }
+
+  /** Sequenced intro: label, title, description, actions, portrait. */
+  const step = (delay: number, duration = 0.7) => ({
+    initial: shouldReduceMotion ? false : { opacity: 0, y: 22 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5, delay, ease },
+    transition: { duration, delay, ease: EASE },
   });
 
   return (
-    <section id="home" className="hero section-anchor" aria-labelledby="hero-title">
-      <div className="shell hero__grid">
+    <section
+      id="home"
+      className="hero anchor"
+      aria-labelledby="hero-title"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetPointer}
+    >
+      <div className="grid-bg" aria-hidden="true" />
+      <div className="shell hero__inner">
         <div className="hero__copy">
-          <motion.div className="hero__status-badge" {...reveal(0.04)}>
-            <span className="status-dot" aria-hidden="true" />
-            <span>{siteConfig.availability}</span>
-          </motion.div>
+          <motion.p className="hero__eyebrow" {...step(0.05, 0.6)}>
+            <span className="hero__eyebrow-bar" aria-hidden="true" />
+            <span className="label label--accent">{siteConfig.name} / Software Developer</span>
+          </motion.p>
 
-          <motion.div className="hero__title-group" {...reveal(0.12)}>
-            <span className="hero__greeting">Hello, I&apos;m</span>
-            <h1 id="hero-title" className="hero__name">
-              {siteConfig.name}
-            </h1>
-            <p className="hero__role">
-              Full-Stack Developer &amp; AI Builder
-            </p>
-          </motion.div>
+          <h1 className="hero__title" id="hero-title">
+            <motion.span className="hero__title-line" {...step(0.14)}>
+              Building digital
+            </motion.span>
+            <motion.span className="hero__title-line" {...step(0.2)}>
+              products that
+            </motion.span>
+            <motion.span className="hero__title-line" {...step(0.26)}>
+              solve <span className="hero__title-accent">real problems.</span>
+            </motion.span>
+          </h1>
 
-          <motion.p className="hero__description" {...reveal(0.2)}>
+          <motion.p className="hero__desc" {...step(0.36)}>
             {siteConfig.hero.description}
           </motion.p>
 
-          <motion.div className="hero__actions" {...reveal(0.26)}>
-            <a className="button button--primary" href="#projects">
-              View Projects <ArrowRight size={17} aria-hidden="true" />
+          <motion.div className="hero__actions" {...step(0.44)}>
+            <a className="btn btn--primary" href="#work">
+              View work <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a className="button button--secondary" href={siteConfig.resumeUrl} download>
-              <ArrowDownToLine size={16} aria-hidden="true" /> Download résumé
+            <a className="btn btn--outline" href={siteConfig.resumeUrl} download>
+              <Download size={15} aria-hidden="true" /> Download resume
             </a>
           </motion.div>
 
-          <motion.div className="hero__socials" {...reveal(0.32)}>
-            <span className="hero__socials-label">Connect</span>
-            <a href={siteConfig.social.github} target="_blank" rel="noreferrer" aria-label="GitHub profile" title="GitHub">
-              <Github size={17} aria-hidden="true" />
+          <motion.div className="hero__socials" {...step(0.52)}>
+            <a className="hero__social" href={siteConfig.social.github} target="_blank" rel="noreferrer">
+              <Github size={15} aria-hidden="true" /> GitHub
             </a>
-            <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
-              <Linkedin size={17} aria-hidden="true" />
+            <a className="hero__social" href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">
+              <Linkedin size={15} aria-hidden="true" /> LinkedIn
             </a>
-            <a href={`mailto:${siteConfig.email}`} aria-label="Send email" title="Email">
-              <Mail size={17} aria-hidden="true" />
+            <a className="hero__social" href={`mailto:${siteConfig.email}`}>
+              <Mail size={15} aria-hidden="true" /> Email
             </a>
           </motion.div>
         </div>
 
         <motion.div
-          className="hero__portrait-wrapper"
-          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.15, ease }}
+          className="hero__portrait"
+          ref={portraitRef}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
         >
-          <div className="hero__portrait-glow" aria-hidden="true" />
-          <div className="hero__portrait-frame">
+          <span className="hero__glow" aria-hidden="true" />
+          <span className="hero__plate" aria-hidden="true" />
+          <motion.div className="hero__frame" style={{ x: shiftX, y: shiftY }}>
             <Image
               src={siteConfig.profileImage}
               alt={siteConfig.profileImageAlt}
-              width={500}
-              height={580}
-              priority
-              className="hero__portrait-img"
+              width={835}
+              height={1024}
+              preload
+              sizes="(max-width: 960px) 420px, 440px"
+              className="hero__img"
             />
-            <div className="hero__portrait-badge">
-              <Code2 size={14} className="hero__portrait-badge-icon" aria-hidden="true" />
-              <div>
-                <strong>B.Tech CSE &bull; LPU</strong>
-                <span>Full-Stack &bull; AI/ML &bull; MERN</span>
-              </div>
-            </div>
-          </div>
+          </motion.div>
+          <span className="hero__chip hero__chip--top">
+            <MapPin size={11} aria-hidden="true" /> Based in India
+          </span>
+          <span className="hero__chip hero__chip--bottom">
+            <span className="dot dot--live" aria-hidden="true" /> Open to opportunities
+          </span>
+          <p className="hero__caption label">B.Tech CSE &bull; Lovely Professional University</p>
         </motion.div>
       </div>
     </section>

@@ -50,27 +50,71 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" noValidate onSubmit={handleSubmit}>
-      <div className="contact-form__field">
-        <label htmlFor="contact-name">Name</label>
-        <input id="contact-name" name="name" autoComplete="name" placeholder="Your name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} />
-        {errors.name ? <p id="contact-name-error" className="field-error" role="alert">{errors.name}</p> : null}
+    <form className="form" noValidate onSubmit={handleSubmit}>
+      <div className="form__row">
+        <div className="form__field">
+          <label className="form__label" htmlFor="contact-name">Name</label>
+          <input
+            id="contact-name"
+            name="name"
+            autoComplete="name"
+            placeholder="Your name"
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "contact-name-error" : undefined}
+          />
+          {errors.name ? <p id="contact-name-error" className="field-error" role="alert">{errors.name}</p> : null}
+        </div>
+        <div className="form__field">
+          <label className="form__label" htmlFor="contact-email">Email</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="you@company.com"
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "contact-email-error" : undefined}
+          />
+          {errors.email ? <p id="contact-email-error" className="field-error" role="alert">{errors.email}</p> : null}
+        </div>
       </div>
-      <div className="contact-form__field">
-        <label htmlFor="contact-email">Email</label>
-        <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="you@company.com" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} />
-        {errors.email ? <p id="contact-email-error" className="field-error" role="alert">{errors.email}</p> : null}
-      </div>
-      <div className="contact-form__field contact-form__field--message">
-        <label htmlFor="contact-message">How can I help?</label>
-        <textarea id="contact-message" name="message" rows={5} placeholder="Tell me a little about the opportunity, challenge, or idea." aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} />
+
+      <div className="form__field">
+        <label className="form__label" htmlFor="contact-message">How can I help?</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={5}
+          placeholder="Tell me a little about the opportunity, challenge, or idea."
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "contact-message-error" : undefined}
+        />
         {errors.message ? <p id="contact-message-error" className="field-error" role="alert">{errors.message}</p> : null}
       </div>
-      <div className="contact-form__bottom">
-        <button className="button button--primary" type="submit" disabled={status === "submitting"}>
-          {status === "submitting" ? <><LoaderCircle className="spin" size={17} aria-hidden="true" /> Sending</> : <><Send size={16} aria-hidden="true" /> Send message</>}
+
+      <div className="form__foot">
+        <button className="btn btn--primary" type="submit" disabled={status === "submitting"}>
+          {status === "submitting" ? (
+            <>
+              <LoaderCircle className="spin" size={16} aria-hidden="true" /> Sending
+            </>
+          ) : (
+            <>
+              <Send size={15} aria-hidden="true" /> Send message
+            </>
+          )}
         </button>
-        <p className={status === "success" ? "form-feedback form-feedback--success" : status === "error" ? "form-feedback form-feedback--error" : "form-feedback"} role="status" aria-live="polite">
+        <p
+          className={
+            status === "success"
+              ? "form__feedback form__feedback--success"
+              : status === "error"
+                ? "form__feedback form__feedback--error"
+                : "form__feedback"
+          }
+          role="status"
+          aria-live="polite"
+        >
           {feedback}
         </p>
       </div>

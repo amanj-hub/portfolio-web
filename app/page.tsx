@@ -1,33 +1,23 @@
 import { About } from "@/components/about";
-import { Achievements } from "@/components/achievements";
 import { BackToTop } from "@/components/back-to-top";
 import { Contact } from "@/components/contact";
-import { Education } from "@/components/education";
-import { ExtraCurricular } from "@/components/extracurricular";
 import { Experience } from "@/components/experience";
-import { FeaturedProject } from "@/components/featured-project";
-import { GitHubActivity } from "@/components/github-activity";
+import { Gallery } from "@/components/gallery";
 import { Hero } from "@/components/hero";
-import { Projects } from "@/components/projects";
+import { IdentityStrip } from "@/components/identity-strip";
 import { SiteFooter } from "@/components/site-footer";
-import { Skills } from "@/components/skills";
-import { Stats } from "@/components/stats";
+import { Work } from "@/components/work";
 
 export default function Home() {
   return (
     <>
       <main id="main-content">
         <Hero />
-        <Stats />
+        <IdentityStrip />
         <About />
-        <Skills />
-        <FeaturedProject />
-        <Projects />
+        <Work />
         <Experience />
-        <Achievements />
-        <Education />
-        <ExtraCurricular />
-        <GitHubActivity />
+        <Gallery />
         <Contact />
       </main>
       <SiteFooter />

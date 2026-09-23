@@ -2,6 +2,9 @@ export type ActivityMedia = {
   src: string;
   alt: string;
   caption?: string;
+  /** Intrinsic pixel size of the file — lets the masonry reserve exact space while loading. */
+  width?: number;
+  height?: number;
 };
 
 export type ActivityPillar = {
@@ -172,26 +175,36 @@ export const extracurricularConfig: {
           src: "/extracurricular/ncc/ncc-ceremonial-uniform.jpg",
           alt: "NCC Senior Division Cadet in ceremonial drill uniform with hackle and sash",
           caption: "Senior Division Cadet — In full ceremonial uniform with hackle, sash, and parade gaiters",
+          width: 768,
+          height: 1024,
         },
         {
           src: "/extracurricular/ncc/ncc-tank-formation.jpg",
           alt: "NCC cadets mounted on Indian Army battle tanks in field formation",
           caption: "Combined Army training camp — Cadets with Indian Army main battle tanks",
+          width: 1024,
+          height: 682,
         },
         {
           src: "/extracurricular/ncc/ncc-field-engineering-instruction.jpg",
           alt: "Cadets receiving instruction on field engineering and mine warfare",
           caption: "Field Engineering & Mine Warfare training session conducted by Indian Army instructors",
+          width: 1024,
+          height: 682,
         },
         {
           src: "/extracurricular/ncc/ncc-stage-address.jpg",
           alt: "NCC cadets delivering an address from the podium on stage",
           caption: "Command & presentation — Cadet address and briefing at institutional gathering",
+          width: 576,
+          height: 1024,
         },
         {
           src: "/extracurricular/ncc/ncc-armored-vehicles-exposure.jpg",
           alt: "Cadet field exposure with tactical armored vehicles",
           caption: "Tactical mobility & armored vehicles exposure during field training camp",
+          width: 1024,
+          height: 797,
         },
       ],
       mediaPlaceholderText:
@@ -268,11 +281,15 @@ export const extracurricularConfig: {
           src: "/extracurricular/gym/gym-silhouette-flex.png",
           alt: "Gym physique conditioning silhouette double biceps pose",
           caption: "Strength conditioning & physique silhouette — Consistency and dedication",
+          width: 1024,
+          height: 604,
         },
         {
           src: "/extracurricular/gym/gym-workout-mirror.png",
           alt: "Gym workout mirror training focus",
           caption: "Gym training focus — Everyday discipline, routine workouts and steady progression",
+          width: 873,
+          height: 1024,
         },
       ],
       mediaPlaceholderText:
@@ -371,21 +388,29 @@ export const extracurricularConfig: {
           src: "/extracurricular/marathons/surya-spiti-challenge-run.jpg",
           alt: "Surya Spiti Challenge high-altitude marathon run along the Sumdo route",
           caption: "Surya Spiti Challenge — High-altitude endurance run passing Sumdo in Spiti Valley",
+          width: 1024,
+          height: 682,
         },
         {
           src: "/extracurricular/marathons/surya-spiti-challenge-flag.jpg",
           alt: "Surya Spiti Challenge finishers holding the Indian National Flag",
           caption: "Surya Spiti Challenge — Finishers holding the Indian Tricolour at the high-altitude finish",
+          width: 1024,
+          height: 682,
         },
         {
           src: "/extracurricular/marathons/raftaar-finish-line.jpg",
           alt: "Raftaar 2.0 Timed Run finish line moment on red carpet with medal and race bib",
           caption: "Raftaar 2.0 Timed Run — Finish line moment with official medal and bib on the red carpet",
+          width: 576,
+          height: 1024,
         },
         {
           src: "/extracurricular/marathons/raftaar-marathon-timed-run.jpg",
           alt: "Raftaar 2.0 Timed Run finishers squad displaying official medals and bibs",
           caption: "Raftaar 2.0 Timed Run — Finisher celebration with team medals and official race bibs",
+          width: 4032,
+          height: 3024,
         },
       ],
       mediaPlaceholderText:

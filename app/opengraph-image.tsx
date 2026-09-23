@@ -8,10 +8,20 @@ export const contentType = "image/png";
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
-      <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "#080b0e", color: "#f4f7f8", padding: "74px", fontFamily: "Arial, sans-serif", backgroundImage: "radial-gradient(circle at 88% 5%, rgba(165,248,209,.18), transparent 32%)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 22, letterSpacing: 4, color: "#a5f8d1" }}><div style={{ display: "flex", width: 44, height: 44, justifyContent: "center", alignItems: "center", border: "1px solid #a5f8d1", borderRadius: 9, fontSize: 15, color: "#f4f7f8" }}>{siteConfig.initials}</div> PORTFOLIO / 2026</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}><div style={{ display: "flex", fontSize: 74, letterSpacing: -4, lineHeight: 0.98, maxWidth: 880, fontWeight: 700 }}>{siteConfig.hero.headline}</div><div style={{ display: "flex", fontSize: 26, color: "#9aa8b2" }}>{siteConfig.name} · Full-Stack Developer · AI Enthusiast</div></div>
-        <div style={{ display: "flex", width: 1052, height: 1, background: "rgba(220,235,240,.25)" }} />
+      <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#0b0b0c", color: "#f4f1ea", padding: "72px", fontFamily: "Arial, sans-serif" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 20, letterSpacing: 6, color: "#e6a862" }}>
+          <div style={{ display: "flex", width: 46, height: 46, justifyContent: "center", alignItems: "center", border: "1px solid rgba(244,241,234,.24)", borderRadius: 4, fontSize: 15, letterSpacing: 2, color: "#f4f1ea" }}>{siteConfig.initials}</div>
+          PORTFOLIO / 2026
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+          <div style={{ display: "flex", fontSize: 66, letterSpacing: -3, lineHeight: 1.02, maxWidth: 900, fontWeight: 700 }}>
+            Building digital products that solve real problems.
+          </div>
+          <div style={{ display: "flex", fontSize: 24, color: "#928c83" }}>
+            {siteConfig.name} · Software Developer · B.Tech CSE
+          </div>
+        </div>
+        <div style={{ display: "flex", width: 1056, height: 1, background: "rgba(244,241,234,.22)" }} />
       </div>
     ),
     size,

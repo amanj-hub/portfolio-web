@@ -40,23 +40,26 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/aman-kumar-8b6143262/",
   },
   nav: [
-    { label: "Home", href: "#home" },
+    { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
-    { label: "Achievements", href: "#achievements" },
-    { label: "Activities", href: "#activities" },
+    { label: "Gallery", href: "#gallery" },
     { label: "Contact", href: "#contact" },
   ],
 } as const;
 
-export const stats = [
-  { value: 3, suffix: "+", label: "full-stack projects" },
-  { value: 20, suffix: "+", label: "technologies explored" },
-  { value: 4, suffix: "", label: "professional certificates" },
-  { value: 2, suffix: "+", label: "years building" },
-];
+/**
+ * The compact editorial metadata strip that sits directly under the hero.
+ * Only facts that already exist elsewhere in this file (role, education,
+ * NCC cadet training, distance running, AI/ML coursework and certificates).
+ */
+export const identityStrip = [
+  "Full-stack developer",
+  "B.Tech CSE · LPU",
+  "NCC cadet",
+  "Distance runner",
+  "AI & ML focus",
+] as const;
 
 export const about = {
   lead: "I build full-stack products that make complex work simpler, from AI-assisted recruitment workflows to accessible legal-awareness tools.",
